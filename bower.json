@@ -1,0 +1,19 @@
+{
+  "name": "techno-hax",
+  "version": "0.0.0",
+  "authors": [
+    "Rafael Khan <raf.khan.f@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "wad": "~1.7.0"
+  }
+}
