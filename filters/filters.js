@@ -29,17 +29,28 @@ window.onload = function() {
     var lmin = 40;
     var lmax = context.sampleRate / 2;
     var ldiff = lmax - lmin;
+
     var lowpass = context.createBiquadFilter();
-    lowpass.type = 0; //set to lowpass
-    lowpass.frequency.value = 440;
+    lowpass.type = 0;
+    lowpass.frequency.value = lmax;
+    
+    var highpass = context.createBiquadFilter();
+    highpass.type = 1;
+    highpass.frequency.value = 5000;
 
     $("#lowpass").change(function(){
       // Linear DOES NOT work :(
       lowpass.frequency.value = lmin + (ldiff * (this.value / 100));
     });
 
-    src.connect(lowpass);
-    lowpass.connect(context.destination);
+    $("#highpass").change(function(){
+      // Linear DOES NOT work :(
+      highpass.frequency.value = lmin + (ldiff * (this.value / 100));
+    });
+
+
+    src.connect(highpass);
+    highpass.connect(context.destination);
 
     src.start(0);
 
