@@ -17,8 +17,8 @@ window.onload = function() {
     // Stolen from <3
     // http://chimera.labs.oreilly.com/books/1234000001552/ch05.html#s05_3
     var draw = function() {
-      drawContext.fillStyle = "#FFF";
-      drawContext.fillRect(0, 0, HEIGHT, WIDTH);
+      drawContext.fillStyle = "#000";
+      drawContext.fillRect(0, 0, WIDTH, HEIGHT);
 
       analyser.getByteFrequencyData(freqDomain);
       for (var i = 0; i < analyser.frequencyBinCount; i++) {
