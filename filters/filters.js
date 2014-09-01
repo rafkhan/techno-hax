@@ -1,8 +1,7 @@
 var audio_dir = "/audio/";
-var song_a = audio_dir + "My_Nu_Leng-The_Grid_Original_Mix.mp3";
-var song_b = audio_dir + "Get Free (Andy C Remix).mp3";
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
+var context = new AudioContext();
 
 function loadAudio(url, cb) {
   var request = new XMLHttpRequest();
