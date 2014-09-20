@@ -5,9 +5,12 @@ var song_b = audio_dir + "Get Free (Andy C Remix).mp3";
 
 window.onload = function() {
   window.AudioContext = window.AudioContext || window.webkitAudioContext;
-  context = new AudioContext();
+  context = new AudioContext()
+    
+  var merger = context.createChannelMerger(2);
+  merger.connect(context.destination);
 
-  function test(buf) {
+  function est(buf) {
     var src1 = context.createBufferSource();
     src1.buffer = buf;
     src1.connect(context.destination);
@@ -35,8 +38,8 @@ window.onload = function() {
 
   loadAudio(song_a, function(s1) {
     loadAudio(song_b, function(s2) {
-      s1.connect(context.destination);
-      s2.connect(context.destination);
+      s1.connect(merger);
+      s2.connect(merger);
 
       $("#a").click(function() {
         s1.start(0);
@@ -51,20 +54,3 @@ window.onload = function() {
   });
 
 };
-
-
-function wad() {
-  window.wa = new Wad({source : audio_dir + song_a});
-  window.wb = new Wad({source : audio_dir + song_b});
-
-  console.log("x");
-
-  $("#a").click(function() {
-    wa.play();
-  });
-
-  $("#b").click(function() {
-    wb.play();
-  });
-}
-
